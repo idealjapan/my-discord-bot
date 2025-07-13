@@ -347,6 +347,10 @@ def save_user_data(user_id, data):
 
 def is_premium_user(user_id):
     """ユーザーがプレミアムかどうかを判定"""
+    # 身内用設定: 全員プレミアムユーザーとして扱う
+    return True
+    
+    # 以下は元のコード（無効化）
     try:
         # サーバーオーナーの特別判定
         community_guild = bot.get_guild(int(settings.get("community_server_id")))
