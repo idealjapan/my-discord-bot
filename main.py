@@ -873,27 +873,14 @@ async def on_ready():
     for cmd in bot.tree.get_commands():
         print(f"- {cmd.name}: {cmd.description}")
     
-    # スラッシュコマンドを強制的に書き換え
+    # スラッシュコマンドを同期（グローバルのみ）
     try:
-        test_guild = discord.Object(id=TEST_GUILD_ID)
-        
-        # Step 1: 既存のギルドコマンドを完全にクリア
-        print("=== 既存コマンドのクリア処理開始 ===")
-        bot.tree.clear_commands(guild=test_guild)
-        empty_sync = await bot.tree.sync(guild=test_guild)
-        print(f"テストサーバーのコマンドをクリア完了: {len(empty_sync)} 個")
-        
-        # Step 2: 新しいコマンドを追加
-        print("=== 新しいコマンドの追加処理開始 ===")
-        synced_guild = await bot.tree.sync(guild=test_guild)
-        print(f'テストサーバー ({TEST_GUILD_ID}) に {len(synced_guild)} 個のスラッシュコマンドを強制同期しました')
-        for cmd in synced_guild:
-            print(f"  ✅ {cmd['name']}: {cmd.get('description', 'N/A')}")
-        
-        # Step 3: グローバルにも同期
         print("=== グローバル同期処理開始 ===")
         synced_global = await bot.tree.sync()
         print(f'グローバルに {len(synced_global)} 個のスラッシュコマンドを同期しました')
+        
+        for cmd in bot.tree.get_commands():
+            print(f"  ✅ {cmd.name}: {cmd.description}")
         
         print("=== コマンド同期処理完了 ===")
         
