@@ -1,44 +1,35 @@
-# 環境変数ファイル
+# Environment variables
 .env
+.env.local
+.env.production
 
-# Python仮想環境
-ai-keisuke-env/
-venv/
-env/
-
-# 個人用実行スクリプト
-open.bat
-*.lnk
-
-# プロジェクトの起動スクリプトは含める
-!ai-keisuke.bat
-!run.sh
-
-# ログファイル
-log.txt
-
-# ユーザーデータ（プライバシー保護）
-data/user_data/*.json
-
-# サーバーデータ（設定情報）
-data/server_data/*.json
-
-# アクティビティログ（統計データ - プライバシー保護）
-data/activity_logs/*.json
-
-# Pythonキャッシュファイル
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# OSファイル
-.DS_Store
-Thumbs.db
-
-# エディタファイル
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-CLAUDE.md
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+attachments/
+*.log
+
+# Temporary files
+temp/
+tmp/
