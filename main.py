@@ -38,13 +38,8 @@ def create_required_directories():
 # 必要なディレクトリを作成
 create_required_directories()
 
-# 既存の環境変数をクリアしてから.envファイルを読み込む
-if 'OPENAI_API_KEY' in os.environ:
-    del os.environ['OPENAI_API_KEY']
-if 'DISCORD_BOT_TOKEN' in os.environ:
-    del os.environ['DISCORD_BOT_TOKEN']
-
-load_dotenv(env_path, override=True)
+# .envファイルを読み込む（環境変数が設定されていない場合のみ）
+load_dotenv(env_path)
 
 # 環境変数からトークンを取得
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
